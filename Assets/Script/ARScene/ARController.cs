@@ -117,11 +117,11 @@ public class ARController : MonoBehaviour
             mapObject.layer = 0;
             // ar界面显示的物体，两者为模型相同位置不同
             var arObject = CreateARModel(model, position, Quaternion.Euler(new Vector3()));
-            MessageBubblesShow mbs = arObject.ARGameObject.AddComponent<MessageBubblesShow>();
+            //MessageBubblesShow mbs = arObject.ARGameObject.AddComponent<MessageBubblesShow>();
             ModelIndicator mi = arObject.ARGameObject.AddComponent<ModelIndicator>();
             mi.SetCameraObject(FirstPersonCamera);
-            mbs.SetTaskDesc(task.TaskDesc);
-            mbs.SetCamera(FirstPersonCamera); 
+            //mbs.SetTaskDesc(task.TaskDesc);
+            //mbs.SetCamera(FirstPersonCamera); 
             AdjestARModelByDeviceOrientation(arObject.ARGameObject, deviceOfUserHead);
             ShowedARModels.Add(arObject);
         }
