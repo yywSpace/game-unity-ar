@@ -1,8 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// 模型上方对话气泡，实现的不好
+/// </summary>
+[Obsolete]
 public class MessageBubblesShow : MonoBehaviour
 {
     public GameObject MessageBubbles;
@@ -16,7 +20,7 @@ public class MessageBubblesShow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Object messageBubblesModel = ARUtils.LoadModel("Model/MessageBubbles");
+        UnityEngine.Object messageBubblesModel = ARUtils.LoadModel("Model/MessageBubbles");
         var messageBubbles = Instantiate(messageBubblesModel, Vector3.zero, Quaternion.Euler(Vector3.zero)) as GameObject;
         MessageBubbles = messageBubbles;
         

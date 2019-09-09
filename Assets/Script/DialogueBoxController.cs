@@ -54,6 +54,7 @@ public class DialogueBoxController : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+  
         if (index >= words.Length - 1)
         {
             ConfirmDialog.SetActive(true);
@@ -68,4 +69,5 @@ public class DialogueBoxController : MonoBehaviour, IPointerClickHandler
     {
         index = 0;
     }
+
 }

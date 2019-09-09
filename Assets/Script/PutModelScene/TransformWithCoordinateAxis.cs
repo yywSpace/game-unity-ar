@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ using UnityEngine;
 /// <summary>
 /// 根据所给坐标轴模型移动物体
 /// </summary>
+[Obsolete]
 public class TransformWithCoordinateAxis : MonoBehaviour
 {
     public Camera cam;

@@ -8,6 +8,8 @@ public class ARModelInfo
 {
     public Anchor Anchor { get; set; }
     public GameObject ARGameObject { get; set; }
-    public GameObject RelatedCoordinate { get; set; }
+    public RotateAndUpDown RotateAndUpDown { get; set; }
+    public TransfromAroundAndDistance TransfromAroundAndDistance { get; set; }
+    public DoubleCickChangeStatus DoubleCickChangeStatus { get; set; }
     public Pose Pose { get; set; }
 }

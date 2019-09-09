@@ -22,6 +22,8 @@ public class PutModelUIController : MonoBehaviour
     public Button DeleteModelButton;
     public GameObject bag;
     public GameObject map;
+    public Image ControlStatus;
+
     private AbstractMap abstractMap;
     public Camera FirstPersonCamera;
     private bool hasShowItems;
@@ -71,13 +73,13 @@ public class PutModelUIController : MonoBehaviour
             {
                 return info.ARGameObject.name == SelectedARObject.name;
             });
+
             print(modelInfo.ARGameObject.name);
 
             if (modelInfo != null)
             {
                 Destroy(modelInfo.ARGameObject);
                 Destroy(modelInfo.Anchor);
-                Destroy(modelInfo.RelatedCoordinate);
                 PutARObjects.Remove(modelInfo);
             }
         });
@@ -97,6 +99,21 @@ public class PutModelUIController : MonoBehaviour
     }
     void Update()
     {
+        // 当选择的物体为空，或者已经被删除后置为灰色
+        if (SelectedARObject == null)
+        {
+            ControlStatus.material.color = Color.gray;
+        }
+        else if (GetSelectARMdel(SelectedARObject).DoubleCickChangeStatus.GetStatus() == 1)
+        {
+            // TransformWithCoordinateAxis 被激活
+            ControlStatus.material.color = Color.red;
+        }
+        else if (GetSelectARMdel(SelectedARObject).DoubleCickChangeStatus.GetStatus() == -1)
+        {
+            // RotateAndUpDown被激活
+            ControlStatus.material.color = Color.green;
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -118,7 +135,9 @@ public class PutModelUIController : MonoBehaviour
                 if (SelectedARObject == null)
                 {
                     SelectedARObject = modelInfo.ARGameObject;
-                    modelInfo.RelatedCoordinate.SetActive(true);
+                    modelInfo.TransfromAroundAndDistance.enabled = true;
+                    modelInfo.RotateAndUpDown.enabled = false;
+                    modelInfo.DoubleCickChangeStatus.enabled = true;
                     return;
                 }
 
@@ -129,9 +148,16 @@ public class PutModelUIController : MonoBehaviour
                     return;
                 }
 
-                GetSelectARMdel(SelectedARObject).RelatedCoordinate.SetActive(false);
+                // disable 前一选中模型
+                GetSelectARMdel(SelectedARObject).TransfromAroundAndDistance.enabled = false;
+                GetSelectARMdel(SelectedARObject).RotateAndUpDown.enabled = false;
+                GetSelectARMdel(SelectedARObject).DoubleCickChangeStatus.enabled = false;
+
                 SelectedARObject = modelInfo.ARGameObject;
-                modelInfo.RelatedCoordinate.SetActive(true);
+                // 激活当前选择模型
+                modelInfo.TransfromAroundAndDistance.enabled = true;
+                modelInfo.RotateAndUpDown.enabled = false;
+                modelInfo.DoubleCickChangeStatus.enabled = true;
             }
         }
     }
