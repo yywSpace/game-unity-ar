@@ -1,36 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BagItem : MonoBehaviour, IPointerClickHandler
+namespace Script.PutModelScene
 {
-    //定义一个委托    
-    public delegate void OnMyPointerClick();
-    public OnMyPointerClick onMyPointerClick;
-    private Image image;
-
-    void Awake()
+    public class BagItem : MonoBehaviour, IPointerClickHandler
     {
-        image = GetComponent<Image>();
-    }
+        //定义一个委托    
+        public delegate void OnMyPointerClick();
+        public OnMyPointerClick onMyPointerClick;
+        private Image _image;
 
-    public void SetImage(string imagePath)
-    {
-        Sprite sprite = Resources.Load<Sprite>(imagePath);
-        image.sprite = sprite;
-    }
+        void Awake()
+        {
+            _image = GetComponent<Image>();
+        }
 
-    public void SetMyPointerClick(OnMyPointerClick clickEvent)
-    {
-        onMyPointerClick = clickEvent;
-    }
+        public void SetImage(string imagePath)
+        {
+            Sprite sprite = Resources.Load<Sprite>(imagePath);
+            _image.sprite = sprite;
+        }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        onMyPointerClick?.Invoke();
-        print(image.name);
+        public void SetMyPointerClick(OnMyPointerClick clickEvent)
+        {
+            onMyPointerClick = clickEvent;
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            onMyPointerClick?.Invoke();
+            print(_image.name);
+        }
     }
 }
 

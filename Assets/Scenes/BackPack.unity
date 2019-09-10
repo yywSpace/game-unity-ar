@@ -411,7 +411,6 @@ GameObject:
   - component: {fileID: 822804015}
   - component: {fileID: 822804014}
   - component: {fileID: 822804013}
-  - component: {fileID: 822804018}
   - component: {fileID: 822804019}
   m_Layer: 0
   m_Name: Cube
@@ -433,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 45041243}
-  DialogueBox: {fileID: 1500388195}
+  dialogueBox: {fileID: 1500388195}
 --- !u!65 &822804014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -506,20 +505,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &822804018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822804012}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91c9e9250ee2f23528dd28f660228305, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 45041243}
-  currentAngle: 0
 --- !u!114 &822804019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,6 +655,16 @@ PrefabInstance:
       propertyPath: ConfirmDialog
       value: 
       objectReference: {fileID: 700973275}
+    - target: {fileID: 2443453863610336931, guid: b3086cc4d93641307b91b36755cfc0c8,
+        type: 3}
+      propertyPath: confirmDialog
+      value: 
+      objectReference: {fileID: 700973275}
+    - target: {fileID: 2443453863610336931, guid: b3086cc4d93641307b91b36755cfc0c8,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 45041243}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3086cc4d93641307b91b36755cfc0c8, type: 3}
 --- !u!224 &1336305916 stripped

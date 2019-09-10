@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class MIniMapClickEvent : MonoBehaviour, IPointerClickHandler
+namespace Script.ARScene
 {
-    public void OnPointerClick(PointerEventData eventData)
+    public class MIniMapClickEvent : MonoBehaviour, IPointerClickHandler
     {
-        SceneManager.LoadScene("HugeMapScene");
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            SceneManager.LoadScene("HugeMapScene");
+        }
     }
 }

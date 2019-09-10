@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Mapbox.Unity.Location;
 using Mapbox.Unity.Map;
 using Mapbox.Utils;
+using Script;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;

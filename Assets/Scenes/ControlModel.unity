@@ -625,6 +625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107270665}
   - component: {fileID: 1107270663}
+  - component: {fileID: 1107270664}
   m_Layer: 0
   m_Name: PubModelUIController
   m_TagString: Untagged
@@ -649,7 +650,26 @@ MonoBehaviour:
   DeleteModelButton: {fileID: 268722985}
   bag: {fileID: 1107470681}
   map: {fileID: 357498492}
-  ControlStatus: {fileID: 2090576282}
+  controlStatus: {fileID: 2090576282}
+  FirstPersonCamera: {fileID: 1264821577}
+--- !u!114 &1107270664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107270662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e06373e09f7f09869eab3e3290bb5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowItemsButton: {fileID: 1642975592}
+  SetModelButton: {fileID: 1902894537}
+  DeleteModelButton: {fileID: 268722985}
+  bag: {fileID: 1107470681}
+  map: {fileID: 357498492}
+  controlStatus: {fileID: 2090576282}
   FirstPersonCamera: {fileID: 1264821577}
 --- !u!4 &1107270665
 Transform:
@@ -1388,6 +1408,7 @@ GameObject:
   - component: {fileID: 2090576281}
   - component: {fileID: 2090576283}
   - component: {fileID: 2090576282}
+  - component: {fileID: 2090576284}
   m_Layer: 5
   m_Name: ContrlStatus
   m_TagString: Untagged
@@ -1451,3 +1472,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090576280}
   m_CullTransparentMesh: 0
+--- !u!114 &2090576284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090576280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f138125b8a0b9bcebb923cdb3525257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationThreshold: 0.5
+  onLongPress:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

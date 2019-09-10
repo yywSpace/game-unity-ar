@@ -23,6 +23,8 @@ using GoogleARCore;
 using Mapbox.Unity.Location;
 using Mapbox.Unity.Map;
 using Mapbox.Utils;
+using Script;
+using Script.ARScene;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,20 +44,20 @@ public class ARController : MonoBehaviour
     /// True if the app is in the process of quitting due to an ARCore connection error,
     /// otherwise false.
     /// </summary>
-    private bool m_IsQuitting = false;
+    private bool _mIsQuitting = false;
 
-    private bool hasLoadModelInMiniMap;
-    private List<ARModelInfo> ShowedARModels;
+    private bool _hasLoadModelInMiniMap;
+    private List<ArModelInfo> _showedArModels;
     public GameObject map;
-    private AbstractMap abstractMap;
-    List<Task> TaskList;
+    private AbstractMap _abstractMap;
+    List<Task> _taskList;
 
     // todo 读取任务，初始化模型
     public void Start()
     {
-        ShowedARModels = new List<ARModelInfo>();
+        _showedArModels = new List<ArModelInfo>();
         // 初始化模型经纬度andyObject1
-        abstractMap = map.GetComponent<AbstractMap>();
+        _abstractMap = map.GetComponent<AbstractMap>();
     }
 
     /// <summary>
@@ -64,15 +66,15 @@ public class ARController : MonoBehaviour
     public void Update()
     {
         _UpdateApplicationLifecycle();
-        Vector3 position = abstractMap.GeoToWorldPosition(TaskLab.get().GetTaskList()[0].TaskLocation);
+        Vector3 position = _abstractMap.GeoToWorldPosition(TaskLab.get().GetTaskList()[0].TaskLocation);
         // 等待abstractMap加载完成
-        if (position != Vector3.zero && !hasLoadModelInMiniMap)
+        if (position != Vector3.zero && !_hasLoadModelInMiniMap)
         {
             var locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
             TaskLab.get().SetCurrentLatlng(locationProvider.CurrentLocation.LatitudeLongitude);
-            TaskList = TaskLab.get().GetTaskListIn(200);
-            InitModelByLatLngs(TaskList, true);
-            hasLoadModelInMiniMap = true;
+            _taskList = TaskLab.get().GetTaskListIn(200);
+            InitModelByLatLngs(_taskList, true);
+            _hasLoadModelInMiniMap = true;
             print("werqerqr");
         }
         // todo 一定范围内模型
@@ -84,30 +86,32 @@ public class ARController : MonoBehaviour
         //}
     }
 
-    public List<ARModelInfo> GetShowedARModels()
+    public List<ArModelInfo> GetShowedArModels()
     {
-        return ShowedARModels;
+        return _showedArModels;
     }
 
 
-    void DestoryShowedARModels(List<ARModelInfo> showedARModels)
+    void DestoryShowedArModels(List<ArModelInfo> showedArModels)
     {
-        foreach (var modelInfo in showedARModels)
+        foreach (var modelInfo in showedArModels)
         {
-            Destroy(modelInfo.ARGameObject);
+            Destroy(modelInfo.ArGameObject);
             Destroy(modelInfo.Anchor);
-            showedARModels.Remove(modelInfo);
+            showedArModels.Remove(modelInfo);
         }
     }
+
     /// <summary>
     /// Inits the model by latlngs.
     /// </summary>
+    /// <param name="tasks"></param>
     /// <param name="deviceOfUserHead">If set to <c>true</c> use device orientation otherwise use user heading.</param>
     void InitModelByLatLngs(List<Task> tasks, bool deviceOfUserHead)
     {
         foreach (var task in tasks)
         {
-            Vector3 position = abstractMap.GeoToWorldPosition(task.TaskLocation);
+            Vector3 position = _abstractMap.GeoToWorldPosition(task.TaskLocation);
             print(position);
             Object model = ARUtils.LoadModel("Model/"+task.TaskModelName);
             print(model);
@@ -115,14 +119,14 @@ public class ARController : MonoBehaviour
             var mapObject = Instantiate(model, position, task.TaskModelRotation) as GameObject;
             mapObject.layer = 0;
             // ar界面显示的物体，两者为模型相同位置不同
-            var arObject = CreateARModel(model, position, Quaternion.Euler(new Vector3()));
+            var arObject = CreateArModel(model, position, Quaternion.Euler(new Vector3()));
             //MessageBubblesShow mbs = arObject.ARGameObject.AddComponent<MessageBubblesShow>();
-            ModelIndicator mi = arObject.ARGameObject.AddComponent<ModelIndicator>();
+            ModelIndicator mi = arObject.ArGameObject.AddComponent<ModelIndicator>();
             mi.SetCameraObject(FirstPersonCamera);
             //mbs.SetTaskDesc(task.TaskDesc);
             //mbs.SetCamera(FirstPersonCamera); 
-            AdjestARModelByDeviceOrientation(arObject.ARGameObject, deviceOfUserHead);
-            ShowedARModels.Add(arObject);
+            AdjustArModelByDeviceOrientation(arObject.ArGameObject, deviceOfUserHead);
+            _showedArModels.Add(arObject);
         }
     }
 
@@ -134,23 +138,23 @@ public class ARController : MonoBehaviour
     /// <param name="model">Model.</param>
     /// <param name="position">Position.</param>
     /// <param name="rotation">Rotation.</param>
-    public static ARModelInfo CreateARModel(Object model, Vector3 position, Quaternion rotation)
+    public static ArModelInfo CreateArModel(Object model, Vector3 position, Quaternion rotation)
     {
-        ARModelInfo modelInfo = new ARModelInfo();
+        ArModelInfo modelInfo = new ArModelInfo();
         Pose pose = new Pose(position, rotation);
-        Anchor anchor = Session.CreateAnchor(pose);
+        //Anchor anchor = Session.CreateAnchor(pose);
         var arObject = Instantiate(model, position, rotation) as GameObject;
         print("Model:" + model);
         print("ARObject:" + arObject);
         print("position:" + position);
         print("Quaternion:" + rotation);
         //print("Anchor:" + anchor);
-        arObject.transform.parent = anchor.transform;
+        //arObject.transform.parent = anchor.transform;
         // 设置层级为Model令出FirstPersonCamera之外的所有相机不可视
         arObject.layer = 8;
         modelInfo.Pose = pose;
-        modelInfo.ARGameObject = arObject;
-        modelInfo.Anchor = anchor;
+        modelInfo.ArGameObject = arObject;
+        //modelInfo.Anchor = anchor;
         return modelInfo;
     }
     /// <summary>
@@ -158,7 +162,7 @@ public class ARController : MonoBehaviour
     /// </summary>
     /// <param name="go">被调整的物体</param>
     /// <param name="deviceOfUserHead">If set to <c>true</c> use device orientation otherwise use user heading.</param>
-    private void AdjestARModelByDeviceOrientation(GameObject go, bool deviceOfUserHead)
+    private void AdjustArModelByDeviceOrientation(GameObject go, bool deviceOfUserHead)
     {
         var locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
         float orientation;
@@ -169,9 +173,9 @@ public class ARController : MonoBehaviour
 
         float differentOfMapAndUserDegree;
         if (orientation >= 180)
-            differentOfMapAndUserDegree = 360 - orientation + abstractMap.transform.rotation.eulerAngles.y;
+            differentOfMapAndUserDegree = 360 - orientation + _abstractMap.transform.rotation.eulerAngles.y;
         else
-            differentOfMapAndUserDegree = 0 - orientation + abstractMap.transform.rotation.eulerAngles.y;
+            differentOfMapAndUserDegree = 0 - orientation + _abstractMap.transform.rotation.eulerAngles.y;
         go.transform.RotateAround(Vector3.zero, Vector3.up, differentOfMapAndUserDegree);
         print(differentOfMapAndUserDegree);
         _ShowAndroidToastMessage(-orientation + "");
@@ -188,7 +192,7 @@ public class ARController : MonoBehaviour
             Application.Quit();
         }
 
-        if (m_IsQuitting)
+        if (_mIsQuitting)
         {
             return;
         }
@@ -198,14 +202,14 @@ public class ARController : MonoBehaviour
         if (Session.Status == SessionStatus.ErrorPermissionNotGranted)
         {
             _ShowAndroidToastMessage("Camera permission is needed to run this application.");
-            m_IsQuitting = true;
+            _mIsQuitting = true;
             Invoke("_DoQuit", 0.5f);
         }
         else if (Session.Status.IsError())
         {
             _ShowAndroidToastMessage(
                 "ARCore encountered a problem connecting.  Please start the app again.");
-            m_IsQuitting = true;
+            _mIsQuitting = true;
             Invoke("_DoQuit", 0.5f);
         }
     }
