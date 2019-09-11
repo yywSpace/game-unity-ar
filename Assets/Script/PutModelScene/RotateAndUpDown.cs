@@ -33,23 +33,10 @@ namespace Script.PutModelScene
                         return;
 
                     if (Mathf.Abs(s01) > Mathf.Abs(s02))
-                        transform.Rotate(transform.up, -s01, Space.World); // 水平
+                        transform.Rotate(transform.up, s01, Space.World); // 水平
                     else
                         transform.Translate(new Vector3(0, -s02 / 50, 0), Space.World); //竖直
 
-                }
-                SwipeInfo swipeInfo = SwipeInfo.GetSwipeInfo(ref _isClick);
-                if (swipeInfo == null)
-                    return;
-                if (swipeInfo.SwipAxisDirection == Vector3.right)
-                {
-                    transform.Rotate(transform.up, -swipeInfo.Direction.magnitude / 5, Space.World);
-                    //print("向右滑动");
-                }
-                else if (swipeInfo.SwipAxisDirection == Vector3.left)
-                {
-                    transform.Rotate(transform.up, swipeInfo.Direction.magnitude / 5, Space.World);
-                    //print("向左滑动");
                 }
             }
 

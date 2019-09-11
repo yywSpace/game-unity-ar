@@ -32,7 +32,7 @@ namespace Script.ARScene
             arrayToggleButton.onClick.AddListener(() =>
             {
                 GameObject arController = GameObject.Find("ARController");
-                List<ArModelInfo> modelList = arController.GetComponent<ARController>().GetShowedArModels();
+                List<ArModelInfo> modelList = arController.GetComponent<ArController>().GetShowedArModels();
                 foreach (var model in modelList)
                 {
                     ModelIndicator mi = model.ArGameObject.GetComponent<ModelIndicator>();

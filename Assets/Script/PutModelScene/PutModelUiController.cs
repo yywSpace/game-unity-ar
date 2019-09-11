@@ -12,71 +12,80 @@ namespace Script.PutModelScene
     /// </summary>
     public class PutModelUiController : MonoBehaviour
     {
-        // 当前放置的物体
-        private GameObject CurrentPutARObjec;
         // 所有放到场景中的ar物体
         private List<ArModelInfo> _putArObjects;
         // 当前被选中的AR模型
         private GameObject _selectedArObject;
 
-        public Button ShowItemsButton;
-        public Button SetModelButton;
-        public Button DeleteModelButton;
+        public Button showItemsButton;
+        public Button setModelButton;
+        public Button deleteModelButton;
         public GameObject bag;
         public GameObject map;
-        public Image controlStatus;
-
-        private AbstractMap abstractMap;
-        public Camera FirstPersonCamera;
-        private bool hasShowItems;
-        private List<Task> TaskList;
+        public GameObject controlStatus;
+        public GameObject controlDetail;
+        
+        private Image _controlStatusImage;
+        private Text[] _controlStatusDetailTexts;
+        
+        private AbstractMap _abstractMap;
+        public Camera firstPersonCamera;
+        private bool _hasShowItems;
+        private List<Task> _taskList;
         // Start is called before the first frame update
         void Start()
         {
+            controlDetail.SetActive(false);
+            _controlStatusImage = controlStatus.GetComponent<Image>();
+            _controlStatusDetailTexts = controlDetail.GetComponentsInChildren<Text>();
             controlStatus.GetComponent<LongPressEventTrigger>().onLongPress.AddListener(
-                () => { print("长按"); }
+                () =>
+                {
+                    print("长按"); 
+                    controlDetail.SetActive(!controlDetail.activeSelf);
+                }
+                
             );
-            TaskList = TaskLab.get().GetTaskList();
-            abstractMap = map.GetComponent<AbstractMap>();
+            _taskList = TaskLab.Get().GetTaskList();
+            _abstractMap = map.GetComponent<AbstractMap>();
             bag.GetComponent<BagController>().SetOnMyItemClick((GameObject currentAddGameObject, List<ArModelInfo> putArObjects) =>
             {
                 _putArObjects = putArObjects;
                 print(_putArObjects);
-                CurrentPutARObjec = currentAddGameObject;
+               // _selectedArObject = currentAddGameObject;
                 bag.SetActive(false);
-                hasShowItems = false;
+                _hasShowItems = false;
             });
 
-            SetModelButton.onClick.AddListener(() =>
+            setModelButton.onClick.AddListener(() =>
             {
                 if (_selectedArObject == null) return;
                 var position = _selectedArObject.transform.position;
                 var task = new Task
                 {
-                    TaskDesc = "1 2 3 4",
-                    TaskLocation = abstractMap.WorldToGeoPosition(position),
+                    TaskDesc = _selectedArObject.name + " 2 3 4",
+                    TaskLocation = _abstractMap.WorldToGeoPosition(position),
                     TaskModelRotation = _selectedArObject.transform.rotation,
                     TaskModelName = _selectedArObject.transform.name.Split('(')[0]
                 };
-                TaskList.Add(task);
-                GameObject.Find("Text").GetComponent<Text>().text += "\nTaskList.Count:" + TaskList.Count + "\nPutedGameObject position:" + position + "\n" + "PutedGameObject Latlng:" + abstractMap.WorldToGeoPosition(position);                print("PutedGameObject position:" + position);
-                print("PutedGameObject Latlng:" + abstractMap.WorldToGeoPosition(position));
+                _taskList.Add(task);
+                GameObject.Find("Text").GetComponent<Text>().text += "\nTaskList.Count:" + _taskList.Count + "\nPutedGameObject position:" + position + "\n" + "PutedGameObject Latlng:" + _abstractMap.WorldToGeoPosition(position);                print("PutedGameObject position:" + position);
+                print("PutedGameObject Latlng:" + _abstractMap.WorldToGeoPosition(position));
             });
 
-            ShowItemsButton.onClick.AddListener(() =>
+            showItemsButton.onClick.AddListener(() =>
             {
-                if (hasShowItems)
+                if (_hasShowItems)
                     bag.SetActive(false);
                 else
                     bag.SetActive(true);
-                hasShowItems = !hasShowItems;
+                _hasShowItems = !_hasShowItems;
             });
 
             // 找到当前选择的模型，删除它的所有信息
-            DeleteModelButton.onClick.AddListener(() =>
+            deleteModelButton.onClick.AddListener(() =>
             {
                 ArModelInfo modelInfo = _putArObjects.Find((info) => info.ArGameObject.name == _selectedArObject.name);
-
 
                 if (modelInfo == null) return;
                 print(modelInfo.ArGameObject.name);
@@ -100,20 +109,38 @@ namespace Script.PutModelScene
         }
         void Update()
         {
+            // 如果控制状态详细信息面板已经显示，在点击其他地方后让其消失
+            if (Input.GetMouseButtonDown(0) && controlDetail.activeSelf)
+            {
+                controlDetail.SetActive(false);
+            }
+            
             // 当选择的物体为空，或者已经被删除后置为灰色
             if (_selectedArObject == null)
             {
-                controlStatus.color = Color.gray;
+                _controlStatusImage.color = Color.gray;
+                _controlStatusDetailTexts[0].text = "未选中";
+                // status detail
+                _controlStatusDetailTexts[1].text = "点击模型：选中当前模型\n双击模型：改变控制状态";
             }
             else if (GetSelectArModel(_selectedArObject).DoubleClickChangeStatus.GetStatus() == 1)
             {
-                // TransformWithCoordinateAxis 被激活
-                controlStatus.color = Color.red;
+                // TransfromAroundAndDistance 被激活
+                _controlStatusImage.color = Color.red;
+                // 1->0, 2->1, 3->2
+                // model name
+                _controlStatusDetailTexts[0].text = "已选中";
+                // status detail
+                _controlStatusDetailTexts[1].text = "上下滑动：控制模型远近\n左右滑动：模型围绕移动";
             }
             else if (GetSelectArModel(_selectedArObject).DoubleClickChangeStatus.GetStatus() == -1)
             {
                 // RotateAndUpDown被激活
-                controlStatus.color = Color.green;
+                _controlStatusImage.color = Color.green;
+                // model name
+                _controlStatusDetailTexts[0].text = "已选中";
+                // status detail
+                _controlStatusDetailTexts[1].text = "上下滑动：控制模型高低\n左右滑动：控制模型旋转";
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -121,7 +148,7 @@ namespace Script.PutModelScene
                 SceneManager.LoadScene(0);
             }
 
-            Ray ray = FirstPersonCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = firstPersonCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hitInfo))
             {
                 // todo 选中时高亮

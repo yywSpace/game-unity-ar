@@ -57,7 +57,7 @@ namespace Script.PutModelScene
                 print("bagItem click:" + gameObject);
                 print("Model/" + imagePath.Split('/')[1]);
                 print("Model:" + model);
-                var modelInfo = ARController.CreateArModel(model, _firstPersonCamera.transform.position + new Vector3(0,-1,2), Quaternion.Euler(new Vector3()));
+                var modelInfo = ArController.CreateArModel(model, _firstPersonCamera.transform.position + new Vector3(0,-1,2), Quaternion.Euler(new Vector3()));
 
                 // 脚本初始化都为false 当用户选择某个模型后添加对此模型的控制
                 RotateAndUpDown raud =  modelInfo.ArGameObject.AddComponent<RotateAndUpDown>();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Script;
 using UnityEngine;
 
 //https://blog.csdn.net/weixin_41071087/article/details/79237849#
@@ -26,7 +27,7 @@ public class TransformWithCoordinateAxis : MonoBehaviour
     private int zTransformSpeed = 60;
     void Start()
     {
-        Vector3 objectSize = ARUtils.GetObjectSize(FollowObject);
+        Vector3 objectSize = ArUtils.GetObjectSize(FollowObject);
         followObjectOffset = new Vector3(0, objectSize.y / 2 + .1f, 0);
         transform.position = FollowObject.transform.position + followObjectOffset;
     }

@@ -10,7 +10,7 @@ namespace Script.PutModelScene
     {
         public Camera cam;
         float scale = .2f;
-        int status = 1;
+        int _status = 1;
         private double _lastKickTime; // 上一次鼠标抬起的时间（用来处理双击）
         private RotateAndUpDown _rotateAndUpDown;
         private TransfromAroundAndDistance _tfAroundAndDistance;
@@ -30,8 +30,7 @@ namespace Script.PutModelScene
             }
 
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo))
+            if (Physics.Raycast(ray, out var hitInfo))
             {
                 // 如果点击物体
                 if (Input.GetMouseButtonDown(0) && hitInfo.transform.name == transform.name)
@@ -39,7 +38,7 @@ namespace Script.PutModelScene
                     // 双击
                     if (Time.realtimeSinceStartup - _lastKickTime < scale)//检测上次点击的时间和当前时间差 在一定范围内认为是双击
                     {
-                        status = -status;
+                        _status = -_status;
                         _rotateAndUpDown.enabled = !_rotateAndUpDown.enabled;
                         _tfAroundAndDistance.enabled = !_tfAroundAndDistance.enabled;
                     }
@@ -60,7 +59,7 @@ namespace Script.PutModelScene
         /// <returns>The status.</returns>
         public int GetStatus()
         {
-            return status;
+            return _status;
         }
     }
 }

@@ -979,17 +979,16 @@
         </e>
         <e p="Script" t="Include">
           <e p="ARScene" t="Include">
-            <e p="ARController.cs" t="Include" />
-            <e p="ARModelInfo.cs" t="Include" />
+            <e p="ArController.cs" t="Include" />
+            <e p="ArModelEventController.cs" t="Include" />
+            <e p="ArModelInfo.cs" t="Include" />
             <e p="CameraFollow.cs" t="Include" />
-            <e p="DontDestroyObjectList.cs" t="Include" />
+            <e p="ConfirmDialogController.cs" t="Include" />
+            <e p="DialogueBoxController.cs" t="Include" />
             <e p="MIniMapClickEvent.cs" t="Include" />
             <e p="UiController.cs" t="Include" />
           </e>
-          <e p="ARUtils.cs" t="Include" />
-          <e p="ConfirmDialogController.cs" t="Include" />
-          <e p="CubeEvent.cs" t="Include" />
-          <e p="DialogueBoxController.cs" t="Include" />
+          <e p="ArUtils.cs" t="Include" />
           <e p="EvaluationScene" t="Include">
             <e p="CreateTabs.cs" t="Include" />
             <e p="SummarisePanelEvent.cs" t="Include" />
@@ -1016,6 +1015,7 @@
           <e p="Task.cs" t="Include" />
           <e p="TaskLab.cs" t="Include" />
           <e p="TestInput.cs" t="Include" />
+          <e p="test.cs" t="Include" />
         </e>
         <e p="XCharts" t="Include">
           <e p="Demo" t="Include">

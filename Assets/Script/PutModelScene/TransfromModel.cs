@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Script;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,7 @@ public class TransfromModel : MonoBehaviour
     void Start()
     {
         msgText = GameObject.Find("Text").GetComponent<Text>();
-        Vector3 objectSize = ARUtils.GetObjectSize(FollowObject);
+        Vector3 objectSize = ArUtils.GetObjectSize(FollowObject);
         followObjectOffset = new Vector3(0, objectSize.y / 2 + .1f, 0);
         transform.position = FollowObject.transform.position + followObjectOffset;
     }

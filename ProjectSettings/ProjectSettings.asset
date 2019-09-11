@@ -731,9 +731,9 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 60f7d807-ac7b-4ddf-b20e-9e9ab2b09fbe
+  cloudProjectId: 8f8f95fb-5b89-4ba6-ba65-5c7e1daa6fd6
   framebufferDepthMemorylessMode: 0
-  projectName: ARTest
+  projectName: ARTest (1)
   organizationId: yywspace
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

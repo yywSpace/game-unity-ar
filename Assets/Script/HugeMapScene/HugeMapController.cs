@@ -23,18 +23,18 @@ public class HugeMapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 position = abstractMap.GeoToWorldPosition(TaskLab.get().GetTaskList()[0].TaskLocation);
+        Vector3 position = abstractMap.GeoToWorldPosition(TaskLab.Get().GetTaskList()[0].TaskLocation);
         if (position != Vector3.zero && !hasLoadModel)
         {
             var locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
-            TaskLab.get().SetCurrentLatlng(locationProvider.CurrentLocation.LatitudeLongitude);
-            TaskList = TaskLab.get().GetTaskListIn(200);
+            TaskLab.Get().SetCurrentLatlng(locationProvider.CurrentLocation.LatitudeLongitude);
+            TaskList = TaskLab.Get().GetTaskListIn(200);
             //TaskList = TaskLab.get().GetTaskList();
             print(position);
             text.text = "abstractMap: " + abstractMap + "\n";
             foreach (var task in TaskList)
             {
-                model = ARUtils.LoadModel("Model/" + task.TaskModelName);
+                model = ArUtils.LoadModel("Model/" + task.TaskModelName);
                 position = abstractMap.GeoToWorldPosition(task.TaskLocation);
                 text.text += "name:" + task.TaskModelName + "\n";
                 text.text += "location:" + task.TaskLocation + "\n";

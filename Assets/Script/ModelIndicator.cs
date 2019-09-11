@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Script;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +20,7 @@ public class ModelIndicator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Object obj = ARUtils.LoadModel("Model/Array");
+        Object obj = ArUtils.LoadModel("Model/Array");
         Array = Instantiate(obj, GameObject.Find("Canvas").transform) as GameObject;
         Array.transform.localScale = Vector3.one * .5f;
         arrayText = Array.GetComponentInChildren<Text>();

@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Script
+namespace Script.ARScene
 {
     public class DialogueBoxController : MonoBehaviour, IPointerClickHandler
     {
@@ -24,7 +24,7 @@ namespace Script
             _words = SplitSentence(taskDesc);
             _showText = gameObject.GetComponentInChildren<Text>();
             _showText.text = _words[0];
-            print("starat");
+            print("start");
         }
 
         public void SetTaskDesc(string sentence)

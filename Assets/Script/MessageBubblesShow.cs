@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Script;
 using UnityEngine;
 using UnityEngine.UI;
 /// <summary>
@@ -20,14 +21,14 @@ public class MessageBubblesShow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UnityEngine.Object messageBubblesModel = ARUtils.LoadModel("Model/MessageBubbles");
+        UnityEngine.Object messageBubblesModel = ArUtils.LoadModel("Model/MessageBubbles");
         var messageBubbles = Instantiate(messageBubblesModel, Vector3.zero, Quaternion.Euler(Vector3.zero)) as GameObject;
         MessageBubbles = messageBubbles;
         
         MessageBubbles.transform.parent = GameObject.Find("Canvas").transform;
         //MessageBubbles.GetComponent<RectTransform>()
             //.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ARUtils.GetObjectSize(gameObject).x*100); ;
-        print(" ARUtils.GetObjectSize(gameObject).x:" + ARUtils.GetObjectSize(gameObject).x);
+        print(" ARUtils.GetObjectSize(gameObject).x:" + ArUtils.GetObjectSize(gameObject).x);
         words = SplitSentence(taskDesc);
         MessageBubbles.SetActive(false);
         Button[] buttons = MessageBubbles.GetComponentsInChildren<Button>();
@@ -109,7 +110,7 @@ public class MessageBubblesShow : MonoBehaviour
             print(distance);
             // 消息框随模型移动缩放
             float scale = 20 / distance;
-            Vector3 screenPoint = cam.WorldToScreenPoint(transform.position + new Vector3(0, ARUtils.GetObjectSize(gameObject).y, 0));
+            Vector3 screenPoint = cam.WorldToScreenPoint(transform.position + new Vector3(0, ArUtils.GetObjectSize(gameObject).y, 0));
             MessageBubbles.transform.position = screenPoint;
             MessageBubbles.transform.localScale = Vector3.one * scale;
         }
