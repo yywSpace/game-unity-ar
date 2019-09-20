@@ -165,6 +165,9 @@ namespace Script.PutModelScene
                         modelInfo.TransfromAroundAndDistance.enabled = true;
                         modelInfo.RotateAndUpDown.enabled = false;
                         modelInfo.DoubleClickChangeStatus.enabled = true;
+                        Renderer _renderer1 = _selectedArObject.GetComponent<MeshRenderer>();
+                        _renderer1.material.shader = Shader.Find("CM/RimLight");
+                        _renderer1.material.SetColor("_RimColor",Color.green);
                         return;
                     }
 
@@ -179,12 +182,17 @@ namespace Script.PutModelScene
                     GetSelectArModel(_selectedArObject).TransfromAroundAndDistance.enabled = false;
                     GetSelectArModel(_selectedArObject).RotateAndUpDown.enabled = false;
                     GetSelectArModel(_selectedArObject).DoubleClickChangeStatus.enabled = false;
-
+                    _selectedArObject.GetComponent<MeshRenderer>().material.SetColor("_RimColor",Color.white);
+                    
                     _selectedArObject = modelInfo.ArGameObject;
                     // 激活当前选择模型
                     modelInfo.TransfromAroundAndDistance.enabled = true;
                     modelInfo.RotateAndUpDown.enabled = false;
                     modelInfo.DoubleClickChangeStatus.enabled = true;
+                    Renderer _renderer = _selectedArObject.GetComponent<MeshRenderer>();
+                    _renderer.material.shader = Shader.Find("CM/RimLight");
+                    _renderer.material.SetColor("_RimColor",Color.green);
+                    print("render over");
                 }
             }
         }

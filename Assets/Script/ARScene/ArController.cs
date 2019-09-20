@@ -153,7 +153,7 @@ namespace Script.ARScene
         {
             ArModelInfo modelInfo = new ArModelInfo();
             Pose pose = new Pose(position, rotation);
-            Anchor anchor = Session.CreateAnchor(pose);
+           // Anchor anchor = Session.CreateAnchor(pose);
             var arObject = Instantiate(model, position, rotation) as GameObject;
             print("Model:" + model);
             print("ARObject:" + arObject);
@@ -162,14 +162,14 @@ namespace Script.ARScene
             //print("Anchor:" + anchor);
             if (arObject != null)
             {
-                arObject.transform.parent = anchor.transform;
+                //arObject.transform.parent = anchor.transform;
                 // 设置层级为Model令出FirstPersonCamera之外的所有相机不可视
                 arObject.layer = 8;
                 modelInfo.Pose = pose;
                 modelInfo.ArGameObject = arObject;
             }
 
-            modelInfo.Anchor = anchor;
+            //modelInfo.Anchor = anchor;
             return modelInfo;
         }
         /// <summary>

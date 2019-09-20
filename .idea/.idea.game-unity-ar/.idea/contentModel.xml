@@ -976,6 +976,7 @@
           <e p="Mapbox" t="Include">
             <e p="MapboxConfiguration.txt" t="Include" />
           </e>
+          <e p="Rim.shader" t="Include" />
         </e>
         <e p="Script" t="Include">
           <e p="ARScene" t="Include">
@@ -997,6 +998,10 @@
           </e>
           <e p="HugeMapScene" t="Include">
             <e p="HugeMapController.cs" t="Include" />
+          </e>
+          <e p="MainPage" t="Include">
+            <e p="AnimationController.cs" t="Include" />
+            <e p="OnMapButtonDrag.cs" t="Include" />
           </e>
           <e p="MessageBubblesShow.cs" t="Include" />
           <e p="ModelIndicator.cs" t="Include" />
