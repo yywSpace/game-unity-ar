@@ -61,7 +61,6 @@ namespace Script.PutModelScene
 
                 // 脚本初始化都为false 当用户选择某个模型后添加对此模型的控制
                 RotateAndUpDown raud =  modelInfo.ArGameObject.AddComponent<RotateAndUpDown>();
-                raud.SetCamera(_firstPersonCamera.GetComponent<Camera>());
                 raud.enabled = false;
                 TransfromAroundAndDistance tad = modelInfo.ArGameObject.AddComponent<TransfromAroundAndDistance>();
                 tad.SetCamera(_firstPersonCamera.GetComponent<Camera>());

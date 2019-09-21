@@ -1002,6 +1002,9 @@
           <e p="MainPage" t="Include">
             <e p="AnimationController.cs" t="Include" />
             <e p="OnMapButtonDrag.cs" t="Include" />
+            <e p="OnSlideEvent.cs" t="Include" />
+            <e p="PlatformRotate.cs" t="Include" />
+            <e p="RoleRotate.cs" t="Include" />
           </e>
           <e p="MessageBubblesShow.cs" t="Include" />
           <e p="ModelIndicator.cs" t="Include" />
