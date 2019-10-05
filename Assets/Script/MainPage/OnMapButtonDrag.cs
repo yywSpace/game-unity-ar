@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace Script.MainPage
@@ -8,7 +9,7 @@ namespace Script.MainPage
     {
         private Animator _anim;
         private float _animProgress;
-
+        public UnityEvent dragEndEvent;
         // Start is called before the first frame update
         void Start()
         {
@@ -35,6 +36,7 @@ namespace Script.MainPage
             _animProgress = 0;
             _anim.SetFloat("progress", _animProgress);
            // _anim.SetBool("slide",false);
+           dragEndEvent?.Invoke();
         }
     }
 }

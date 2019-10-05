@@ -999,12 +999,14 @@
           <e p="HugeMapScene" t="Include">
             <e p="HugeMapController.cs" t="Include" />
           </e>
+          <e p="InteractionWithAndroid.cs" t="Include" />
           <e p="MainPage" t="Include">
             <e p="AnimationController.cs" t="Include" />
             <e p="OnMapButtonDrag.cs" t="Include" />
             <e p="OnSlideEvent.cs" t="Include" />
             <e p="PlatformRotate.cs" t="Include" />
             <e p="RoleRotate.cs" t="Include" />
+            <e p="UiController.cs" t="Include" />
           </e>
           <e p="MessageBubblesShow.cs" t="Include" />
           <e p="ModelIndicator.cs" t="Include" />
@@ -1022,8 +1024,6 @@
           </e>
           <e p="Task.cs" t="Include" />
           <e p="TaskLab.cs" t="Include" />
-          <e p="TestInput.cs" t="Include" />
-          <e p="test.cs" t="Include" />
         </e>
         <e p="XCharts" t="Include">
           <e p="Demo" t="Include">

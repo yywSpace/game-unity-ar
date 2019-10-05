@@ -153,23 +153,23 @@ namespace Script.ARScene
         {
             ArModelInfo modelInfo = new ArModelInfo();
             Pose pose = new Pose(position, rotation);
-           // Anchor anchor = Session.CreateAnchor(pose);
+            Anchor anchor = Session.CreateAnchor(pose);
             var arObject = Instantiate(model, position, rotation) as GameObject;
             print("Model:" + model);
             print("ARObject:" + arObject);
             print("position:" + position);
             print("Quaternion:" + rotation);
-            //print("Anchor:" + anchor);
+            print("Anchor:" + anchor);
             if (arObject != null)
             {
-                //arObject.transform.parent = anchor.transform;
+                arObject.transform.parent = anchor.transform;
                 // 设置层级为Model令出FirstPersonCamera之外的所有相机不可视
                 arObject.layer = 8;
                 modelInfo.Pose = pose;
                 modelInfo.ArGameObject = arObject;
             }
 
-            //modelInfo.Anchor = anchor;
+            modelInfo.Anchor = anchor;
             return modelInfo;
         }
         /// <summary>
@@ -201,12 +201,7 @@ namespace Script.ARScene
         /// </summary>
         private void _UpdateApplicationLifecycle()
         {
-            // Exit the app when the 'back' button is pressed.
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                Application.Quit();
-            }
-
+            
             if (_mIsQuitting)
             {
                 return;

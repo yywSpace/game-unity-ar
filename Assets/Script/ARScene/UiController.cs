@@ -23,27 +23,35 @@ namespace Script.ARScene
         void Start()
         {
             _abstractMap = map.GetComponent<AbstractMap>();
-            putModelButton.onClick.AddListener(() =>
-            {
-                SceneManager.LoadScene("ControlModel");
-                print("LoadScene");
-            });
-
-            arrayToggleButton.onClick.AddListener(() =>
-            {
-                GameObject arController = GameObject.Find("ARController");
-                List<ArModelInfo> modelList = arController.GetComponent<ArController>().GetShowedArModels();
-                foreach (var model in modelList)
+            if (putModelButton != null)
+                putModelButton.onClick.AddListener(() =>
                 {
-                    ModelIndicator mi = model.ArGameObject.GetComponent<ModelIndicator>();
-                    mi.enabled = !mi.enabled;
-                }
-            });
+                    SceneManager.LoadScene("ControlModel");
+                    print("LoadScene");
+                });
+            if (arrayToggleButton != null)
+                arrayToggleButton.onClick.AddListener(() =>
+                {
+                    GameObject arController = GameObject.Find("ARController");
+                    List<ArModelInfo> modelList = arController.GetComponent<ArController>().GetShowedArModels();
+                    foreach (var model in modelList)
+                    {
+                        ModelIndicator mi = model.ArGameObject.GetComponent<ModelIndicator>();
+                        mi.enabled = !mi.enabled;
+                    }
+                });
         }
 
         // Update is called once per frame
         void Update()
         {
+        
+            // 返回主页面
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("MainPage");
+            }
+            
             var locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
             // 根据地图将经纬度转化为当前世界坐标
             Vector3 worldPosition = _abstractMap.GeoToWorldPosition(locationProvider.CurrentLocation.LatitudeLongitude);

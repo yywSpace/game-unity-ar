@@ -1,54 +1,54 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Mapbox.Unity.Location;
 using Mapbox.Unity.Map;
-using Mapbox.Utils;
-using Script;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class HugeMapController : MonoBehaviour
+namespace Script.HugeMapScene
 {
-    private bool hasLoadModel;
-    private List<Task> TaskList;
-    private AbstractMap abstractMap;
-    public GameObject map;
-    public Text text;
-    Object model;
-    void Start()
+    public class HugeMapController : MonoBehaviour
     {
-        abstractMap = map.GetComponent<AbstractMap>();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 position = abstractMap.GeoToWorldPosition(TaskLab.Get().GetTaskList()[0].TaskLocation);
-        if (position != Vector3.zero && !hasLoadModel)
+        private bool _hasLoadModel;
+        private List<Task> _taskList;
+        private AbstractMap _abstractMap;
+        private Object _model;
+        public GameObject map;
+        public Text text;
+        void Start()
         {
-            var locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
-            TaskLab.Get().SetCurrentLatlng(locationProvider.CurrentLocation.LatitudeLongitude);
-            TaskList = TaskLab.Get().GetTaskListIn(200);
-            //TaskList = TaskLab.get().GetTaskList();
-            print(position);
-            text.text = "abstractMap: " + abstractMap + "\n";
-            foreach (var task in TaskList)
-            {
-                model = ArUtils.LoadModel("Model/" + task.TaskModelName);
-                position = abstractMap.GeoToWorldPosition(task.TaskLocation);
-                text.text += "name:" + task.TaskModelName + "\n";
-                text.text += "location:" + task.TaskLocation + "\n";
-                text.text += "position:" + position + "\n";
-                //print(position);
-                Instantiate(model, position, task.TaskModelRotation);
-            }
-            hasLoadModel = true;
+            _abstractMap = map.GetComponent<AbstractMap>();
         }
-     
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // Update is called once per frame
+        void Update()
         {
-            SceneManager.LoadScene("SampleScene");
-            print("LoadScene ContorlModel");
+            // 返回主页面
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("MainPage");
+            }
+        
+            Vector3 position = _abstractMap.GeoToWorldPosition(TaskLab.Get().GetTaskList()[0].TaskLocation);
+            if (position != Vector3.zero && !_hasLoadModel)
+            {
+                var locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
+                TaskLab.Get().SetCurrentLatlng(locationProvider.CurrentLocation.LatitudeLongitude);
+                _taskList = TaskLab.Get().GetTaskListIn(200);
+                //TaskList = TaskLab.get().GetTaskList();
+                text.text = "abstractMap: " + _abstractMap + "\n";
+                foreach (var task in _taskList)
+                {
+                    _model = ArUtils.LoadModel("Model/" + task.TaskModelName);
+                    position = _abstractMap.GeoToWorldPosition(task.TaskLocation);
+                    var message = text.text;
+                    message += "name:" + task.TaskModelName + "\n";
+                    message += "location:" + task.TaskLocation + "\n";
+                    message += "position:" + position + "\n";
+                    text.text = message;
+                    Instantiate(_model, position, task.TaskModelRotation);
+                }
+                _hasLoadModel = true;
+            }
         }
     }
 }

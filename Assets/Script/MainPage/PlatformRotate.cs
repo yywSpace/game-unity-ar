@@ -9,19 +9,43 @@ namespace Script.MainPage
         private Vector3 _startPos;
         private Vector3 _endPos;
         public float slideDistance = 5;
+        public Camera cam;
         private bool _isClick;
-        private bool _hasLoad;
+        private bool _hasSlide;
         public OnSlideEvent onSlide = new OnSlideEvent();
 
         // Update is called once per frame
         void Update()
         {
+            // 按下鼠标时，如果焦点不在模型上则返回
+            // 如果初始时在模型上，则之后划出模型仍然当作滑动成功
             if (Input.GetMouseButtonDown(0))
             {
+                //如果非滑动模型，则返回
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hitInfo))
+                {
+                    var hitParent = hitInfo.transform.parent;
+                    string hitName = hitParent == null
+                        ? hitInfo.transform.name
+                        : hitParent.name;
+                
+                    var goParent = transform.parent;
+                    string goName = goParent == null
+                        ? gameObject.transform.name
+                        : goParent.name;
+                
+                    if (hitName != goName)
+                        return;
+                }
+                else
+                {
+                    return;
+                }
                 print("mouse down");
                 _startPos = Input.mousePosition;
                 _isClick = true;
-                _hasLoad = false;
+                _hasSlide = false;
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -31,8 +55,8 @@ namespace Script.MainPage
                 _isClick = false;
             }
             
-            // 如果还未松手，则返回
-            if (_isClick || _hasLoad)
+            // 如果还未松手且已经滑动完成，则返回
+            if (_isClick || _hasSlide)
                 return;
             
             Vector3 v = _endPos - _startPos;
@@ -44,7 +68,7 @@ namespace Script.MainPage
             if (Mathf.Abs(v.x) < slideDistance)
                 return;
             onSlide?.Invoke(v.x,v.y);
-            _hasLoad = true;
+            _hasSlide = true;
         }
     }
 }

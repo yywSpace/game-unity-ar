@@ -20,8 +20,12 @@ namespace Script.MainPage
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hitInfo))
+            {
                 if (gameObject.transform.name != hitInfo.transform.name)
                     return;
+            }
+            else
+                return;
 
             if (Input.touchCount == 1)
             {

@@ -143,9 +143,10 @@ namespace Script.PutModelScene
                 _controlStatusDetailTexts[1].text = "上下滑动：控制模型高低\n左右滑动：控制模型旋转";
             }
 
+            // 返回主页面
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene("MainPage");
             }
 
             Ray ray = firstPersonCamera.ScreenPointToRay(Input.mousePosition);
