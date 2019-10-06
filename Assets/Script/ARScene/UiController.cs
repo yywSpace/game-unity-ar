@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Mapbox.Unity.Location;
 using Mapbox.Unity.Map;
+using Script.Event;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ namespace Script.ARScene
         private AbstractMap _abstractMap;
         public Button putModelButton;
         public Button arrayToggleButton;
-
+        public GameObject miniMap;
         public Text messageText;
         public GameObject map;
         public Transform playerTransform;
@@ -23,12 +24,18 @@ namespace Script.ARScene
         void Start()
         {
             _abstractMap = map.GetComponent<AbstractMap>();
+
+            // 小地图点击事件
+            miniMap.GetComponent<PointerClickEventTrigger>().onPointerClick
+                .AddListener(() => SceneManager.LoadScene("HugeMapScene"));
+            
             if (putModelButton != null)
                 putModelButton.onClick.AddListener(() =>
                 {
-                    SceneManager.LoadScene("ControlModel");
+                    SceneManager.LoadScene("ModelPutScene");
                     print("LoadScene");
                 });
+            
             if (arrayToggleButton != null)
                 arrayToggleButton.onClick.AddListener(() =>
                 {
@@ -49,9 +56,10 @@ namespace Script.ARScene
             // 返回主页面
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                // Application.Quit();
                 SceneManager.LoadScene("MainPage");
             }
-            
+
             var locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
             // 根据地图将经纬度转化为当前世界坐标
             Vector3 worldPosition = _abstractMap.GeoToWorldPosition(locationProvider.CurrentLocation.LatitudeLongitude);

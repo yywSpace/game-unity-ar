@@ -1150,6 +1150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   putModelButton: {fileID: 413728815}
   arrayToggleButton: {fileID: 409964801}
+  miniMap: {fileID: 1341519124248989054}
   messageText: {fileID: 492991045}
   map: {fileID: 699539878}
   playerTransform: {fileID: 1788477434}
@@ -1772,5 +1773,29 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 500
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1341519124477697000, guid: a05b00e8e2d964b4f8d0d8bd4d75a7b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a05b00e8e2d964b4f8d0d8bd4d75a7b2, type: 3}
+--- !u!1 &1341519124248989054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1341519124477697007, guid: a05b00e8e2d964b4f8d0d8bd4d75a7b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1341519124248989053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1341519124248989055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341519124248989054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e757db85fe774b9884108510c3411912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPointerClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

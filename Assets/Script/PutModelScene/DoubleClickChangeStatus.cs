@@ -9,42 +9,22 @@ namespace Script.PutModelScene
     public class DoubleClickChangeStatus : MonoBehaviour
     {
         public Camera cam;
-        float scale = .2f;
         int _status = 1;
-        private double _lastKickTime; // 上一次鼠标抬起的时间（用来处理双击）
         private RotateAndUpDown _rotateAndUpDown;
         private TransfromAroundAndDistance _tfAroundAndDistance;
         private void Start()
         {
-            _lastKickTime = Time.realtimeSinceStartup;
             _rotateAndUpDown = gameObject.GetComponent<RotateAndUpDown>();
             _tfAroundAndDistance = gameObject.GetComponent<TransfromAroundAndDistance>();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (cam == null)
+            DoubleClickEventTrigger doubleClick = gameObject.AddComponent<DoubleClickEventTrigger>();
+            doubleClick.SetCamera(cam);
+            doubleClick.onDoubleClick.AddListener(() =>
             {
-                return;
-            }
-
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out var hitInfo))
-            {
-                // 如果点击物体
-                if (Input.GetMouseButtonDown(0) && hitInfo.transform.name == transform.name)
-                {
-                    // 双击
-                    if (Time.realtimeSinceStartup - _lastKickTime < scale)//检测上次点击的时间和当前时间差 在一定范围内认为是双击
-                    {
-                        _status = -_status;
-                        _rotateAndUpDown.enabled = !_rotateAndUpDown.enabled;
-                        _tfAroundAndDistance.enabled = !_tfAroundAndDistance.enabled;
-                    }
-                    _lastKickTime = Time.realtimeSinceStartup;//重新设置上次点击的时间
-                }
-            }
+                _status = -_status;
+                _rotateAndUpDown.enabled = !_rotateAndUpDown.enabled;
+                _tfAroundAndDistance.enabled = !_tfAroundAndDistance.enabled;
+            });
+           
         }
 
         public void SetCamera(Camera camera)

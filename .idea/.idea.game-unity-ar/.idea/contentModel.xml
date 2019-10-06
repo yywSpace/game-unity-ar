@@ -986,7 +986,6 @@
             <e p="CameraFollow.cs" t="Include" />
             <e p="ConfirmDialogController.cs" t="Include" />
             <e p="DialogueBoxController.cs" t="Include" />
-            <e p="MIniMapClickEvent.cs" t="Include" />
             <e p="UiController.cs" t="Include" />
           </e>
           <e p="ArUtils.cs" t="Include" />
@@ -995,6 +994,11 @@
             <e p="SummarisePanelEvent.cs" t="Include" />
             <e p="Test.cs" t="Include" />
             <e p="hexagram.cs" t="Include" />
+          </e>
+          <e p="Event" t="Include">
+            <e p="DoubleClickEventTrigger.cs" t="Include" />
+            <e p="LongPressEventTrigger.cs" t="Include" />
+            <e p="PointerClickEventTrigger.cs" t="Include" />
           </e>
           <e p="HugeMapScene" t="Include">
             <e p="HugeMapController.cs" t="Include" />
@@ -1014,7 +1018,6 @@
             <e p="BagController.cs" t="Include" />
             <e p="BagItem.cs" t="Include" />
             <e p="DoubleClickChangeStatus.cs" t="Include" />
-            <e p="LongPressEventTrigger.cs" t="Include" />
             <e p="PutModelUiController.cs" t="Include" />
             <e p="RotateAndUpDown.cs" t="Include" />
             <e p="SwipeInfo.cs" t="Include" />

@@ -1,5 +1,7 @@
-﻿using Mapbox.Utils;
+﻿using System.Collections.Generic;
+using Mapbox.Utils;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Script
 {
@@ -49,6 +51,18 @@ namespace Script
             float b = radLng1 - radLng2;
             double result = 2 * Mathf.Asin(Mathf.Sqrt(Mathf.Pow(Mathf.Sin(a / 2), 2) + Mathf.Cos(radLat1) * Mathf.Cos(radLat2) * Mathf.Pow(Mathf.Sin(b / 2), 2))) * EARTH_RADIUS;
             return result;
+        }
+        
+        public static bool IsPointerOverUiObject()
+        {
+            //判断是否点击的是UI，有效应对安卓没有反应的情况，true为UI
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current)
+            {
+                position = new Vector2(Input.mousePosition.x, Input.mousePosition.y)
+            };
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+            return results.Count > 0;
         }
     }
 }
