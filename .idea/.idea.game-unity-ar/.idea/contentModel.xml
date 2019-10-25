@@ -989,10 +989,24 @@
             <e p="UiController.cs" t="Include" />
           </e>
           <e p="ArUtils.cs" t="Include" />
+          <e p="Client" t="Include">
+            <e p="clients" t="Include">
+              <e p="ChatClient.cs" t="Include" />
+              <e p="ClientLab.cs" t="Include" />
+              <e p="GameClient.cs" t="Include" />
+            </e>
+            <e p="message" t="Include">
+              <e p="MessageData.cs" t="Include" />
+              <e p="MessageType.cs" t="Include" />
+            </e>
+            <e p="users" t="Include">
+              <e p="ClientUser.cs" t="Include" />
+              <e p="Location.cs" t="Include" />
+            </e>
+          </e>
           <e p="EvaluationScene" t="Include">
             <e p="CreateTabs.cs" t="Include" />
             <e p="SummarisePanelEvent.cs" t="Include" />
-            <e p="Test.cs" t="Include" />
             <e p="hexagram.cs" t="Include" />
           </e>
           <e p="Event" t="Include">
@@ -1006,11 +1020,26 @@
           <e p="InteractionWithAndroid.cs" t="Include" />
           <e p="MainPage" t="Include">
             <e p="AnimationController.cs" t="Include" />
-            <e p="OnMapButtonDrag.cs" t="Include" />
+            <e p="CallAndroidMethod.cs" t="Include" />
+            <e p="ChatRoomController.cs" t="Include" />
+            <e p="Friend.cs" t="Include" />
+            <e p="GameClientController.cs" t="Include" />
             <e p="OnSlideEvent.cs" t="Include" />
-            <e p="PlatformRotate.cs" t="Include" />
+            <e p="Panel" t="Include">
+              <e p="OnMapButtonDrag.cs" t="Include" />
+            </e>
             <e p="RoleRotate.cs" t="Include" />
+            <e p="Social" t="Include">
+              <e p="BubbleController.cs" t="Include" />
+            </e>
             <e p="UiController.cs" t="Include" />
+            <e p="UserManagement" t="Include">
+              <e p="User.cs" t="Include" />
+              <e p="UserLab.cs" t="Include" />
+            </e>
+            <e p="platfrom" t="Include">
+              <e p="PlatformRotate.cs" t="Include" />
+            </e>
           </e>
           <e p="MessageBubblesShow.cs" t="Include" />
           <e p="ModelIndicator.cs" t="Include" />
@@ -1027,6 +1056,7 @@
           </e>
           <e p="Task.cs" t="Include" />
           <e p="TaskLab.cs" t="Include" />
+          <e p="Test.cs" t="Include" />
         </e>
         <e p="XCharts" t="Include">
           <e p="Demo" t="Include">

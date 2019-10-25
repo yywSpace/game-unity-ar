@@ -101,10 +101,7 @@ namespace Script.PutModelScene
         /// <param name="go">当前选中的模型</param>
         ArModelInfo GetSelectArModel(GameObject go)
         {
-            ArModelInfo modelInfo = _putArObjects.Find((info) =>
-            {
-                return info.ArGameObject.name == go.name;
-            });
+            ArModelInfo modelInfo = _putArObjects.Find((info) => info.ArGameObject.name == go.name);
             return modelInfo;
         }
         void Update()
@@ -157,6 +154,8 @@ namespace Script.PutModelScene
                 if (Input.GetMouseButtonDown(0))
                 {
                     ArModelInfo modelInfo = GetSelectArModel(hitInfo.collider.gameObject);
+                    
+                    print(hitInfo.collider.gameObject.name);
                     if (modelInfo == null)
                         return;
 
@@ -190,9 +189,9 @@ namespace Script.PutModelScene
                     modelInfo.TransfromAroundAndDistance.enabled = true;
                     modelInfo.RotateAndUpDown.enabled = false;
                     modelInfo.DoubleClickChangeStatus.enabled = true;
-                    Renderer _renderer = _selectedArObject.GetComponent<MeshRenderer>();
-                    _renderer.material.shader = Shader.Find("CM/RimLight");
-                    _renderer.material.SetColor("_RimColor",Color.green);
+                    Renderer render = _selectedArObject.GetComponent<MeshRenderer>();
+                    render.material.shader = Shader.Find("CM/RimLight");
+                    render.material.SetColor("_RimColor",Color.green);
                     print("render over");
                 }
             }

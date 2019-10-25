@@ -29,15 +29,21 @@ namespace Script.PutModelScene
         void InitBag()
         {
             print("InitBag");
-            CreateCell("Image/Capsule");
-            CreateCell("Image/Cube");
-            CreateCell("Image/Cylinder");
-            CreateCell("Image/Sphere");
+            CreateCell("Image/Cyan_Fish");
+            CreateCell("Image/Bamboo");
+            CreateCell("Image/Earth");
+            CreateCell("Image/Aircraft");
+            CreateCell("Image/Bird_man");
+            CreateCell("Image/八重樱");
+//            CreateCell("Image/Capsule");
+//            CreateCell("Image/Cube");
+//            CreateCell("Image/Cylinder");
+//            CreateCell("Image/Sphere");
         }
 
         void CreateCell(int r, int c)
         {
-            GameObject go = new GameObject(r.ToString() + ":" + c.ToString());
+            GameObject go = new GameObject(r + ":" + c);
             go.AddComponent<Image>();
             go.transform.SetParent(transform, false);
         }
@@ -53,12 +59,18 @@ namespace Script.PutModelScene
             bagItem.SetImage(imagePath);
             bagItem.SetMyPointerClick(() =>
             {
+                if (_putArObjects.Count >= 1)
+                {
+                    print("只可放置一个模型");
+                    return;
+                }
                 Object model = Resources.Load("Model/" + imagePath.Split('/')[1]);
                 print("bagItem click:" + gameObject);
                 print("Model/" + imagePath.Split('/')[1]);
                 print("Model:" + model);
-                var modelInfo = ArController.CreateArModel(model, _firstPersonCamera.transform.position + new Vector3(0,-1,2), Quaternion.Euler(new Vector3()));
-
+                var modelInfo = ArController.CreateArModel(model, new Vector3(0,0,2), Quaternion.Euler(new Vector3()));
+                Vector3 size =  ArUtils.GetObjectSizeByCollider(modelInfo.ArGameObject);
+                modelInfo.ArGameObject.transform.position = new Vector3(0,-size.y/2,2*size.z);
                 // 脚本初始化都为false 当用户选择某个模型后添加对此模型的控制
                 RotateAndUpDown raud =  modelInfo.ArGameObject.AddComponent<RotateAndUpDown>();
                 raud.enabled = false;
@@ -77,30 +89,16 @@ namespace Script.PutModelScene
                 modelInfo.ArGameObject.transform.RotateAround(_firstPersonCamera.transform.position, Vector3.up, _firstPersonCamera.transform.rotation.eulerAngles.y);
                 // 更改名字作为每个物体不同的标识
                 modelInfo.ArGameObject.name = $"{modelInfo.ArGameObject.name.Split('(')[0]}({modelId++})";
-                //Object coordinate = ARUtils.LoadModel("Model/Coordinate");
-                //var coordinateObject = Instantiate(coordinate, new Vector3(), Quaternion.Euler(new Vector3())) as GameObject;
-                //// 开始时不启用，点击时启用
-                //coordinateObject.SetActive(false);
-                //// 更改名字作为每个物体不同的标识
-                //coordinateObject.name = string.Format("{0}:{1}", coordinateObject.name.Split('(')[0], modelInfo.ARGameObject.name);
-                //TransformWithCoordinateAxis tfwca = coordinateObject.GetComponent<TransformWithCoordinateAxis>();
-                //tfwca.enabled = false;
-                //TransfromModel tfm = coordinateObject.GetComponent<TransfromModel>();
-                //tfm.SetCamera(FirstPersonCamera.GetComponent<Camera>());
-                //tfm.SetFollowObject(modelInfo.ARGameObject); tfwca.SetCamera(FirstPersonCamera.GetComponent<Camera>());
-                //tfwca.SetFollowObject(modelInfo.ARGameObject);
-                //tfwca.SetCamera(FirstPersonCamera.GetComponent<Camera>());
-                //tfwca.SetFollowObject(modelInfo.ARGameObject);
-                //modelInfo.RelatedCoordinate = coordinateObject;
+             
                 _putArObjects.Add(modelInfo);
                 onMyItemClick?.Invoke(modelInfo.ArGameObject, _putArObjects);
             });
             go.transform.SetParent(transform, false);
         }
-        public void SetOnMyItemClick(OnMyItemClick clickEvend)
+        public void SetOnMyItemClick(OnMyItemClick clickEvent)
         {
-            onMyItemClick = clickEvend;
+            onMyItemClick = clickEvent;
         }
-
+     
     }
 }

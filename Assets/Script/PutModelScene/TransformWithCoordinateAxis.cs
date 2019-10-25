@@ -27,7 +27,7 @@ public class TransformWithCoordinateAxis : MonoBehaviour
     private int zTransformSpeed = 60;
     void Start()
     {
-        Vector3 objectSize = ArUtils.GetObjectSize(FollowObject);
+        Vector3 objectSize = ArUtils.GetObjectSizeByMeshFilter(FollowObject);
         followObjectOffset = new Vector3(0, objectSize.y / 2 + .1f, 0);
         transform.position = FollowObject.transform.position + followObjectOffset;
     }

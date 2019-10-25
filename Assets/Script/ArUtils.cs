@@ -7,7 +7,13 @@ namespace Script
 {
     public static class ArUtils
     {
-        public static Vector3 GetObjectSize(GameObject go)
+ 
+        public static Vector3 GetObjectSizeByCollider(GameObject gObject)
+        {
+            Vector3 size = gObject.GetComponentInChildren<Collider>().bounds.size;
+            return size;
+        }
+        public static Vector3 GetObjectSizeByMeshFilter(GameObject go)
         {
             Vector3 realSize = Vector3.zero;
 
@@ -33,7 +39,7 @@ namespace Script
         }
 
         //地球半径，单位米
-        private const double EARTH_RADIUS = 6378137;
+        private const double EarthRadius = 6378137;
         /// <summary>
         /// 计算两点位置的距离，返回两点的距离，单位：米
         /// 该公式为GOOGLE提供，误差小于0.2米
@@ -49,7 +55,7 @@ namespace Script
             float radLng2 = (float)latlng2.y * Mathf.Deg2Rad;
             float a = radLat1 - radLat2;
             float b = radLng1 - radLng2;
-            double result = 2 * Mathf.Asin(Mathf.Sqrt(Mathf.Pow(Mathf.Sin(a / 2), 2) + Mathf.Cos(radLat1) * Mathf.Cos(radLat2) * Mathf.Pow(Mathf.Sin(b / 2), 2))) * EARTH_RADIUS;
+            double result = 2 * Mathf.Asin(Mathf.Sqrt(Mathf.Pow(Mathf.Sin(a / 2), 2) + Mathf.Cos(radLat1) * Mathf.Cos(radLat2) * Mathf.Pow(Mathf.Sin(b / 2), 2))) * EarthRadius;
             return result;
         }
         

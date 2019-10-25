@@ -18,7 +18,9 @@ namespace Script.MainPage
         public Animator timeAnimator;
         public Animator dateAnimator;
         public Animator platformAnimator;
-
+        public Animator communicationAnimator;
+        
+        
         public GameObject role;
         public GameObject platform;
         public Camera cam;
@@ -28,8 +30,10 @@ namespace Script.MainPage
         private void OnEnable()
         {
             // 默认为正常模式
-            ChangeToNormalMode();
-            _platformStatus = 0;
+            ChangeToOperationMode();
+
+
+            _platformStatus = 2;
             leftAnimator.SetBool("slide", false);
             // 角色旋转
             role.GetComponent<RoleRotate>()
@@ -37,7 +41,7 @@ namespace Script.MainPage
                 .AddListener((x, y) =>
                 {
                     if (Mathf.Abs(x) > Mathf.Abs(y)) // 水平
-                        role.transform.Rotate(role.transform.up, (float)(x*1.5), Space.World);
+                        role.transform.Rotate(role.transform.up, -(float)(x*1.5), Space.World);
                 });
             // 平台旋转
             platform.GetComponent<PlatformRotate>()
@@ -97,6 +101,10 @@ namespace Script.MainPage
                 leftAnimator.SetBool("showLeft", true);
                 rightAnimator.SetBool("showRight", true);
             }
+            
+            // 与本状态无关动画隐藏
+            if (communicationAnimator.enabled)
+                communicationAnimator.SetBool("socialPanelShow", false);
         }
 
         void ChangeToScreenLockMode()
@@ -123,6 +131,10 @@ namespace Script.MainPage
                 timeAnimator.SetBool("showTime", true);
                 dateAnimator.SetBool("showDate", true);
             }
+
+            // 与本状态无关动画隐藏
+            if (communicationAnimator.enabled)
+                communicationAnimator.SetBool("socialPanelShow", false);
         }
 
         void ChangeToNormalMode()
@@ -135,12 +147,25 @@ namespace Script.MainPage
                 leftAnimator.SetBool("showLeft", false);
             }
 
+            if (communicationAnimator.enabled != true)
+            {
+                communicationAnimator.enabled = true;
+            }
+            else
+            {
+                communicationAnimator.SetBool("socialPanelShow",true); 
+            }
+
+            // 与本状态无关动画隐藏
             if (rightAnimator.enabled)
                 rightAnimator.SetBool("showRight", false);
             if (timeAnimator.enabled)
                 timeAnimator.SetBool("showTime", false);
             if (dateAnimator.enabled)
                 dateAnimator.SetBool("showDate", false);
+
+       
+            
         }
     }
 }

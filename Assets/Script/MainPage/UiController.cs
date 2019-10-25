@@ -19,14 +19,17 @@ namespace Script.MainPage
         public Button buttonTask;
         public Button buttonCourse;
         public Button buttonPut;
-        
+
+        private string _userAccount;
         void Start()
         {
+//            CallAndroidMethod.StartLoginActivity();
+
             moreInfo.GetComponent<PointerClickEventTrigger>()
                 .onPointerClick
                 .AddListener((() =>
                 {
-                    StartFeedbackActivity();
+                    CallAndroidMethod.StartFeedbackActivity();
                     print("more information");
                 }));
             
@@ -50,9 +53,9 @@ namespace Script.MainPage
             {
                 SceneManager.LoadScene("HugeMapScene");
             });
-            buttonFriend.onClick.AddListener(StartFriendActivity);
-            buttonTask.onClick.AddListener(StartTaskActivity);
-            buttonCourse.onClick.AddListener(StartCourseActivity);
+            buttonFriend.onClick.AddListener(CallAndroidMethod.StartFriendActivity);
+            buttonTask.onClick.AddListener(CallAndroidMethod.StartTaskActivity);
+            buttonCourse.onClick.AddListener(CallAndroidMethod.StartCourseActivity);
             buttonPut.onClick.AddListener(() => { SceneManager.LoadScene("ModelPutScene"); });
         }
 
@@ -60,6 +63,7 @@ namespace Script.MainPage
         // Update is called once per frame
         void Update()
         {
+
             // 如果控制状态详细信息面板已经显示，在点击其他地方后让其消失
             if (Input.GetMouseButtonDown(0) && characterDetailInfo.activeSelf && !ArUtils.IsPointerOverUiObject())
             {
@@ -71,35 +75,12 @@ namespace Script.MainPage
                 Application.Quit();
             }
         }
-        
-        
-        
-        void StartFriendActivity()
-        {
-            AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
-            jo.Call("startFriendActivity");
-        }
 
-        void StartTaskActivity()
+        public void GetUserAccount(string account)
         {
-            AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
-            jo.Call("startTaskActivity");
-        }
-
-        void StartCourseActivity()
-        {
-            AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
-            jo.Call("startCourseActivity");
-        }
-
-        void StartFeedbackActivity()
-        {
-            AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
-            jo.Call("startFeedbackActivity");
-        }
+            _userAccount = account;
+        }   
     }
+    
+   
 }
