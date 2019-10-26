@@ -329,7 +329,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 758587179}
   m_HandleRect: {fileID: 0}
@@ -475,9 +475,9 @@ RectTransform:
   m_Father: {fileID: 886050463}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270.4, y: -83.85}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 497.5, y: 107.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &95805003
@@ -671,9 +671,9 @@ RectTransform:
   m_Father: {fileID: 886050463}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270.4, y: -424.45}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 498.2, y: 48.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &116131891
@@ -824,9 +824,9 @@ RectTransform:
   m_Father: {fileID: 886050463}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270.4, y: -316.575}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 498.2, y: 48.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &156517050
@@ -1455,6 +1455,42 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3806636850605185006, guid: 199f2760a214d670ba6731864881bd55,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b3bc1c32ce2284758a917d938d8c3693,
+        type: 3}
+    - target: {fileID: 3806636850605185006, guid: 199f2760a214d670ba6731864881bd55,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3806636850605185006, guid: 199f2760a214d670ba6731864881bd55,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3806636850605185006, guid: 199f2760a214d670ba6731864881bd55,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434620791899664513, guid: 199f2760a214d670ba6731864881bd55,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738918877243308961, guid: 199f2760a214d670ba6731864881bd55,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529195122343520513, guid: 199f2760a214d670ba6731864881bd55,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 199f2760a214d670ba6731864881bd55, type: 3}
 --- !u!1 &620681086
@@ -2028,7 +2064,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2366,9 +2402,9 @@ RectTransform:
   m_Father: {fileID: 886050463}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270.4, y: -597.7625}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 498.2, y: 71.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &826701397
@@ -2435,13 +2471,14 @@ GameObject:
   - component: {fileID: 886050466}
   - component: {fileID: 886050465}
   - component: {fileID: 886050464}
+  - component: {fileID: 886050467}
   m_Layer: 5
   m_Name: CharacterDetailInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &886050463
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2531,6 +2568,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886050462}
   m_CullTransparentMesh: 0
+--- !u!114 &886050467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886050462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b362ca756b22d13e8a22c7c680664b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userNameText: {fileID: 1039673738}
+  userHpSlider: {fileID: 72491268}
+  userExpSlider: {fileID: 1272416251}
+  userLevelText: {fileID: 1459050277}
+  userReleaseNumText: {fileID: 1689851113}
+  userAcceptNumText: {fileID: 1023447391}
+  userAccomplishNumText: {fileID: 1866589442}
+  userFriendNumText: {fileID: 164041969}
 --- !u!1 &918062853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2638,7 +2695,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3459,7 +3516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000076293945, y: 0.000024796}
+  m_AnchoredPosition: {x: 0, y: 0.000024796}
   m_SizeDelta: {x: 638, y: 107.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1039673738
@@ -4339,7 +4396,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 920375379}
   m_HandleRect: {fileID: 0}
@@ -4553,19 +4610,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1151970883}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1345021735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345021734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a615974e9baf497bba9cbe688d026e13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 760413971}
 --- !u!95 &1345021736
 Animator:
   serializedVersion: 3
@@ -4836,6 +4880,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459050275}
   m_CullTransparentMesh: 0
+--- !u!1 &1492431941 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5623480325055504856, guid: 199f2760a214d670ba6731864881bd55,
+    type: 3}
+  m_PrefabInstance: {fileID: 529237012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492431945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492431941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &1511226476
 GameObject:
   m_ObjectHideFlags: 0
@@ -4948,9 +5011,9 @@ RectTransform:
   m_Father: {fileID: 886050463}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270.4, y: -532.325}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 498.2, y: 48.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1567616573
@@ -5666,9 +5729,9 @@ RectTransform:
   m_Father: {fileID: 886050463}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270.4, y: -370.5125}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 498.2, y: 48.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1968686436
@@ -5827,6 +5890,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974836160}
   m_CullTransparentMesh: 0
+--- !u!1 &1981273609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1981273611}
+  - component: {fileID: 1981273610}
+  m_Layer: 0
+  m_Name: GameClientController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1981273610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981273609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f962106776947c79c23a1bf721dd36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasReceiveMessage: 0
+--- !u!4 &1981273611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981273609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.48699996, z: -5.296}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2002416005
 GameObject:
   m_ObjectHideFlags: 0
@@ -5965,9 +6072,9 @@ RectTransform:
   m_Father: {fileID: 886050463}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270.4, y: -214.9875}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 498.2, y: 143.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2021835511
@@ -6045,6 +6152,8 @@ MonoBehaviour:
   chatBubblePrefab: {fileID: 3745854182955829060, guid: 786da80e28b86c3fdab4443705d980b5,
     type: 3}
   role: {fileID: 932302181}
+  clientController: {fileID: 1981273610}
+  otherName: 
 --- !u!4 &2077158939
 Transform:
   m_ObjectHideFlags: 0
@@ -6185,9 +6294,9 @@ RectTransform:
   m_Father: {fileID: 886050463}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270.4, y: -478.3875}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 498.2, y: 48.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2118868015

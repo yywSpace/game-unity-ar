@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Script.MainPage
 {
-    public class CallAndroidMethod
+    public static class CallAndroidMethod
     {
         public static void StartFriendActivity()
         {
@@ -37,7 +37,21 @@ namespace Script.MainPage
             AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
             AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
             jo.Call("startLoginActivity");
+        }   
+        public static void StartMapActivity()
+        {
+            AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
+            jo.Call("startMapActivity");
         }
+
+        public static void Toast(string message)
+        {
+            AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
+            jo.Call("toast",message); 
+        }
+        
 
         /// <summary>
         /// 调用android方法，清空其中存储的上一登录者的信息，重新登录

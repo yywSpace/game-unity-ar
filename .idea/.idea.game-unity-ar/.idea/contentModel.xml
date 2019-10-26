@@ -1004,11 +1004,6 @@
               <e p="Location.cs" t="Include" />
             </e>
           </e>
-          <e p="EvaluationScene" t="Include">
-            <e p="CreateTabs.cs" t="Include" />
-            <e p="SummarisePanelEvent.cs" t="Include" />
-            <e p="hexagram.cs" t="Include" />
-          </e>
           <e p="Event" t="Include">
             <e p="DoubleClickEventTrigger.cs" t="Include" />
             <e p="LongPressEventTrigger.cs" t="Include" />
@@ -1017,7 +1012,6 @@
           <e p="HugeMapScene" t="Include">
             <e p="HugeMapController.cs" t="Include" />
           </e>
-          <e p="InteractionWithAndroid.cs" t="Include" />
           <e p="MainPage" t="Include">
             <e p="AnimationController.cs" t="Include" />
             <e p="CallAndroidMethod.cs" t="Include" />
@@ -1034,6 +1028,9 @@
             </e>
             <e p="UiController.cs" t="Include" />
             <e p="UserManagement" t="Include">
+              <e p="CharacterDetailInfoController.cs" t="Include" />
+              <e p="CharacterInfoController.cs" t="Include" />
+              <e p="MysqlExample.cs" t="Include" />
               <e p="User.cs" t="Include" />
               <e p="UserLab.cs" t="Include" />
             </e>
@@ -1057,114 +1054,6 @@
           <e p="Task.cs" t="Include" />
           <e p="TaskLab.cs" t="Include" />
           <e p="Test.cs" t="Include" />
-        </e>
-        <e p="XCharts" t="Include">
-          <e p="Demo" t="Include">
-            <e p="Editor" t="Include">
-              <e p="ChartModuleDrawer.cs" t="Include" />
-              <e p="DemoEditor.cs" t="Include" />
-            </e>
-            <e p="Scripts" t="Include">
-              <e p="Demo.cs" t="Include" />
-              <e p="Demo10_LineSimple.cs" t="Include" />
-              <e p="Demo11_AddSinCurve.cs" t="Include" />
-              <e p="Demo50_Scatter.cs" t="Include" />
-              <e p="Demo_Dynamic.cs" t="Include" />
-              <e p="Demo_LargeData.cs" t="Include" />
-              <e p="Demo_PieChart.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="Editor" t="Include">
-              <e p="BarChartEditor.cs" t="Include" />
-              <e p="BaseChartEditor.cs" t="Include" />
-              <e p="CoordinateChartEditor.cs" t="Include" />
-              <e p="LineChartEditor.cs" t="Include" />
-              <e p="PieChartEditor.cs" t="Include" />
-              <e p="PropertyDrawers" t="Include">
-                <e p="AreaStyleDrawer.cs" t="Include" />
-                <e p="AxisDrawer.cs" t="Include" />
-                <e p="AxisLabelDrawer.cs" t="Include" />
-                <e p="AxisLineDrawer.cs" t="Include" />
-                <e p="AxisNameDrawer.cs" t="Include" />
-                <e p="AxisSplitAreaDrawer.cs" t="Include" />
-                <e p="AxisTickDrawer.cs" t="Include" />
-                <e p="BarDrawer.cs" t="Include" />
-                <e p="DataZoomDrawer.cs" t="Include" />
-                <e p="GridDrawer.cs" t="Include" />
-                <e p="LegendDrawer.cs" t="Include" />
-                <e p="LineDrawer.cs" t="Include" />
-                <e p="LineStyleDrawer.cs" t="Include" />
-                <e p="LocationDrawer.cs" t="Include" />
-                <e p="PieDrawer.cs" t="Include" />
-                <e p="RadarDrawer.cs" t="Include" />
-                <e p="RadarIndicatorDrawer.cs" t="Include" />
-                <e p="SerieDrawer.cs" t="Include" />
-                <e p="SerieLabelDrawer.cs" t="Include" />
-                <e p="SerieSymbolDrawer.cs" t="Include" />
-                <e p="SeriesDrawer.cs" t="Include" />
-                <e p="ThemeInfoDrawer.cs" t="Include" />
-                <e p="TitleDrawer.cs" t="Include" />
-                <e p="TooltipDrawer.cs" t="Include" />
-                <e p="XAxisDrawer.cs" t="Include" />
-                <e p="YAxisDrawer.cs" t="Include" />
-              </e>
-              <e p="RadarChartEditor.cs" t="Include" />
-              <e p="ScatterChartEditor.cs" t="Include" />
-              <e p="Utility" t="Include">
-                <e p="ChartEditorHelper.cs" t="Include" />
-              </e>
-            </e>
-            <e p="UI" t="Include">
-              <e p="BarChart.cs" t="Include" />
-              <e p="Component" t="Include">
-                <e p="Axis.cs" t="Include" />
-                <e p="Bar.cs" t="Include" />
-                <e p="DataZoom.cs" t="Include" />
-                <e p="Grid.cs" t="Include" />
-                <e p="Legend.cs" t="Include" />
-                <e p="Line.cs" t="Include" />
-                <e p="Pie.cs" t="Include" />
-                <e p="Radar.cs" t="Include" />
-                <e p="Serie.cs" t="Include" />
-                <e p="Series.cs" t="Include" />
-                <e p="Theme.cs" t="Include" />
-                <e p="Title.cs" t="Include" />
-                <e p="Tooltip.cs" t="Include" />
-              </e>
-              <e p="Interface" t="Include">
-                <e p="IJsonData.cs" t="Include" />
-                <e p="IPropertyChanged.cs" t="Include" />
-              </e>
-              <e p="Internal" t="Include">
-                <e p="AreaStyle.cs" t="Include" />
-                <e p="AxisLabel.cs" t="Include" />
-                <e p="AxisLine.cs" t="Include" />
-                <e p="AxisName.cs" t="Include" />
-                <e p="AxisSplitArea.cs" t="Include" />
-                <e p="AxisTick.cs" t="Include" />
-                <e p="BaseChart.cs" t="Include" />
-                <e p="BaseChart_API.cs" t="Include" />
-                <e p="CoordinateChart.cs" t="Include" />
-                <e p="CoordinateChart_API.cs" t="Include" />
-                <e p="JsonDataSupport.cs" t="Include" />
-                <e p="LineStyle.cs" t="Include" />
-                <e p="Location.cs" t="Include" />
-                <e p="SerieData.cs" t="Include" />
-                <e p="SerieLabel.cs" t="Include" />
-                <e p="SerieSymbol.cs" t="Include" />
-              </e>
-              <e p="LineChart.cs" t="Include" />
-              <e p="PieChart.cs" t="Include" />
-              <e p="RadarChart.cs" t="Include" />
-              <e p="ScatterChart.cs" t="Include" />
-              <e p="Utility" t="Include">
-                <e p="ChartButton.cs" t="Include" />
-                <e p="ChartCached.cs" t="Include" />
-                <e p="ChartHelper.cs" t="Include" />
-              </e>
-            </e>
-          </e>
         </e>
       </e>
       <e p="Temp/bin" t="ExcludeRecursive" />
