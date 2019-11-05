@@ -21,7 +21,7 @@ namespace Script.MainPage.UserManagement
                 MySqlConnection connection = Connect();
                 string sql = "SELECT * FROM user WHERE user_account=@account";
                 MySqlCommand command = new MySqlCommand(sql, connection);
-                command.Parameters.AddWithValue("account", account);
+                command.Parameters.AddWithValue("account", "1095204049");
                 MySqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
@@ -51,9 +51,9 @@ namespace Script.MainPage.UserManagement
                 if (user == null)
                     return null;
                 sql = "SELECT " +
-                      "     count(IF(task_status = '接取',true,NULL)) AS receive_number," +
-                      "     count(IF(task_status = '发布',true,NULL)) AS release_number," +
-                      "     count(IF(task_type = '已完成',true,NULL)) AS accomplish_number " +
+                      "     count(IF(task_type = '接取',true,NULL)) AS receive_number," +
+                      "     count(IF(task_type = '发布',true,NULL)) AS release_number," +
+                      "     count(IF(task_status = '已完成',true,NULL)) AS accomplish_number " +
                       "FROM task WHERE user_id = @userId";
                 command = new MySqlCommand(sql, connection);
                 command.Parameters.AddWithValue("userId", user.Id);

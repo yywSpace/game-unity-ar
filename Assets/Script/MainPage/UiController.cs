@@ -17,7 +17,6 @@ namespace Script.MainPage
         public GameObject characterDetailInfo;
         public GameObject moreInfo;
 
-        public Button buttonFriend;
         public Button buttonTask;
         public Button buttonCourse;
         public Button buttonPut;
@@ -63,7 +62,6 @@ namespace Script.MainPage
                         SceneManager.LoadScene("ModelScanScene");
                 });
             mapPanel.GetComponent<OnMapButtonDrag>().dragEndEvent.AddListener(CallAndroidMethod.StartMapActivity);
-            buttonFriend.onClick.AddListener(CallAndroidMethod.StartFriendActivity);
             buttonTask.onClick.AddListener(CallAndroidMethod.StartTaskActivity);
             buttonCourse.onClick.AddListener(CallAndroidMethod.StartCourseActivity);
             buttonPut.onClick.AddListener(() => { SceneManager.LoadScene("ModelPutScene"); });
@@ -106,6 +104,10 @@ namespace Script.MainPage
             }
         }
 
+        /// <summary>
+        /// 由android方调用，获取当前登录者账户
+        /// </summary>
+        /// <param name="account"></param>
         public void GetUserAccount(string account)
         {
             _userAccount = account;

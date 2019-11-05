@@ -39,7 +39,9 @@ namespace Script.MainPage
             
             friendBtn.onClick.AddListener(() =>
             {
-                chatPanel.SetActive(true);
+                // 此处显示好友列表, 并将当前接收的消息传入android界面
+                CallAndroidMethod.StartFriendListDialog();
+                // chatPanel.SetActive(true);
             });
             squareBtn.onClick.AddListener(()=>
             {

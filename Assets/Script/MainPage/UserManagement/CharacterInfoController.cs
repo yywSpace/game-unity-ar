@@ -1,8 +1,7 @@
-﻿using Script.MainPage.UserManagement;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Script.MainPage
+namespace Script.MainPage.UserManagement
 {
     public class CharacterInfoController : MonoBehaviour
     {
@@ -16,9 +15,9 @@ namespace Script.MainPage
         {
             if (user.AvatarBytes != null)
             {
-                Texture2D tx = new Texture2D(512, 512);
+                Texture2D tx = new Texture2D(260, 260);//512
                 tx.LoadImage(user.AvatarBytes);
-                userAvatarImage.sprite = Sprite.Create(tx, new Rect(0, 0, 500f, 500f), new Vector2(0.5f, 0.5f));
+                userAvatarImage.sprite = Sprite.Create(tx, new Rect(0, 0, 260, 260), new Vector2(0.5f, 0.5f));
             }
             
             userNameText.text = user.UserName;

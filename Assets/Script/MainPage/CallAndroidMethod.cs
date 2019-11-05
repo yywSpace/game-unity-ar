@@ -44,6 +44,16 @@ namespace Script.MainPage
             AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
             jo.Call("startMapActivity");
         }
+        
+        /// <summary>
+        /// 开启好友对话框，并传入当前对话信息
+        /// </summary>
+        public static void StartFriendListDialog()
+        {
+            AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
+            jo.Call("startFriendDialog","message");
+        }
 
         public static void Toast(string message)
         {
@@ -51,7 +61,6 @@ namespace Script.MainPage
             AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
             jo.Call("toast",message); 
         }
-        
 
         /// <summary>
         /// 调用android方法，清空其中存储的上一登录者的信息，重新登录
